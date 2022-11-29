@@ -47,11 +47,6 @@ final class RouteFindingFeatureViewController: UIViewController, UIGestureRecogn
     private var pageView: RouteFindingPageView = {
         let view = RouteFindingPageView()
         
-        // MARK: ✏️
-//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(makeRoutePointButton(_:)))
-//        view.addGestureRecognizer(gestureRecognizer)
-        
-        
         return view
     }()
     
@@ -243,8 +238,8 @@ final class RouteFindingFeatureViewController: UIViewController, UIGestureRecogn
     }
     
     func addRoutePointButton(to location: CGPoint ) {
-        var button = UIButton()
-        button.setImage(UIImage(named: isHandButton ? "fail_icon" : "success_icon"), for: .normal)
+        
+        var button = isHandButton ? RouteFindingFeatureHandButton() : RouteFindingFeatureFootButton()
         self.view.addSubview(button)
         var panGesture = UIPanGestureRecognizer(target: self, action: #selector(moveRoutePointButton(_:)))
         panGesture.delegate = self
@@ -252,8 +247,8 @@ final class RouteFindingFeatureViewController: UIViewController, UIGestureRecogn
         button.snp.makeConstraints{
             $0.centerX.equalTo(location.x)
             $0.centerY.equalTo(location.y)
+            
         }
-//        button.center = CGPoint(x: container.center.x, y: container.center.y)
     }
     
     @objc
