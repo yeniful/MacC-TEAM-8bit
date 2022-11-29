@@ -222,8 +222,11 @@ final class RouteFindingFeatureViewController: UIViewController, UIGestureRecogn
     // PageInfo를 RouteFindingPageView로 전환
     private func convertPageInfoToPageView(from pageInfo: PageInfo) -> RouteFindingPageView {
         let view = RouteFindingPageView()
-        
         // TODO: RouteFindingPageVIew UI 및 뷰 구현방법이 나오면 PageInfo에서 뷰 그리기 구현
+        
+        // ✏️
+        view.points = pageInfo.points
+        
         
         return view
     }
@@ -240,16 +243,18 @@ final class RouteFindingFeatureViewController: UIViewController, UIGestureRecogn
     func addRoutePointButton(to location: CGPoint ) {
         
         var button = isHandButton ? RouteFindingFeatureHandButton() : RouteFindingFeatureFootButton()
-        self.view.addSubview(button)
+//        self.view.addSubview(button)
+        pageView.addSubview(button)
         var panGesture = UIPanGestureRecognizer(target: self, action: #selector(moveRoutePointButton(_:)))
         panGesture.delegate = self
         button.addGestureRecognizer(panGesture)
+        pageView.points?.append(PointInfo(footOrHand: isHandButton ? .hand : .foot, isForce: true, position: location, forceDirection: .pi0))
         button.snp.makeConstraints{
             $0.centerX.equalTo(location.x)
             $0.centerY.equalTo(location.y)
             
         }
-    }
+    }//0x10330ccd0
     
     @objc
     func moveRoutePointButton(_ sender: UIPanGestureRecognizer){

@@ -14,7 +14,7 @@ class RouteFindingFeatureHandButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setImage(UIImage(named: "fail_icon"), for: .normal)
+        self.setImage(UIImage(named: "fail_icon")!.resized(to: CGSize(width: 40, height: 40)), for: .normal)
     }
     
     required init?(coder: NSCoder) {
