@@ -129,6 +129,8 @@
 		78FEE89929291AC9007B67BD /* VideoDetailPageViewController+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEE89829291AC9007B67BD /* VideoDetailPageViewController+Protocol.swift */; };
 		78FEE89B29291AEA007B67BD /* VideoDetailPageViewController+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FEE89A29291AEA007B67BD /* VideoDetailPageViewController+Extentions.swift */; };
 		A81992C42927E48B00F024CA /* VideoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81992C32927E48B00F024CA /* VideoSlider.swift */; };
+		A84C2C4F293522AD00975C9F /* RouteFindingFeatureHandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84C2C4E293522AD00975C9F /* RouteFindingFeatureHandButton.swift */; };
+		A84C2C52293522D400975C9F /* RouteFindingFeatureFootButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84C2C51293522D400975C9F /* RouteFindingFeatureFootButton.swift */; };
 		A88805852907F5A0002CD52E /* LevelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88805842907F5A0002CD52E /* LevelPickerView.swift */; };
 		FB3227FC2903FD9C00276A7D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3227FB2903FD9C00276A7D /* Date+.swift */; };
 		FB3227FE2903FDA600276A7D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3227FD2903FDA600276A7D /* String+.swift */; };
@@ -261,6 +263,8 @@
 		78FEE89829291AC9007B67BD /* VideoDetailPageViewController+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoDetailPageViewController+Protocol.swift"; sourceTree = "<group>"; };
 		78FEE89A29291AEA007B67BD /* VideoDetailPageViewController+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoDetailPageViewController+Extentions.swift"; sourceTree = "<group>"; };
 		A81992C32927E48B00F024CA /* VideoSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSlider.swift; sourceTree = "<group>"; };
+		A84C2C4E293522AD00975C9F /* RouteFindingFeatureHandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteFindingFeatureHandButton.swift; sourceTree = "<group>"; };
+		A84C2C51293522D400975C9F /* RouteFindingFeatureFootButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteFindingFeatureFootButton.swift; sourceTree = "<group>"; };
 		A88805842907F5A0002CD52E /* LevelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerView.swift; sourceTree = "<group>"; };
 		FB3227FB2903FD9C00276A7D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		FB3227FD2903FDA600276A7D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -389,6 +393,7 @@
 				34E11EE429309E1000787316 /* RouteFindingThumbnailCollectionViewFlowLayout.swift */,
 				34E11EE629309E2900787316 /* RouteFindingThumbnailCollectionViewCell.swift */,
 				343170F129310971005E66F3 /* RouteFindingPageView.swift */,
+				A84C2C50293522B100975C9F /* UIComponent */,
 			);
 			path = RouteFindingFeature;
 			sourceTree = "<group>";
@@ -667,6 +672,15 @@
 			path = VideoPlayViewController;
 			sourceTree = "<group>";
 		};
+		A84C2C50293522B100975C9F /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				A84C2C4E293522AD00975C9F /* RouteFindingFeatureHandButton.swift */,
+				A84C2C51293522D400975C9F /* RouteFindingFeatureFootButton.swift */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
 		FB32281129046CBF00276A7D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +780,7 @@
 				709A8C6D2904A3E800CEA6F4 /* CustomIndicator.swift in Sources */,
 				342508A729001BBC000653D9 /* HomeTableViewCardCell.swift in Sources */,
 				78FEE88B292616BC007B67BD /* VideoDetailViewController+Extensions.swift in Sources */,
+				A84C2C4F293522AD00975C9F /* RouteFindingFeatureHandButton.swift in Sources */,
 				0A0B410D2907C79200057FA7 /* VideoResultType.swift in Sources */,
 				34EC54582924C93B00EE558E /* HomeTableViewHeader.swift in Sources */,
 				70A44805290440E600BE18A5 /* DateSettingViewController.swift in Sources */,
@@ -819,6 +834,7 @@
 				78F93ED7290743DF00F3D9F3 /* LevelAndPFEditViewController.swift in Sources */,
 				341418B42922974D0033D851 /* VisitedClimbingGym+CoreDataClass.swift in Sources */,
 				78A0354C290131E100FF1913 /* VideoCollectionViewController.swift in Sources */,
+				A84C2C52293522D400975C9F /* RouteFindingFeatureFootButton.swift in Sources */,
 				342508A329001780000653D9 /* HomeViewController.swift in Sources */,
 				705C19C929309AB300C975D5 /* UINavigationController+.swift in Sources */,
 				342508A52900196B000653D9 /* HomeViewController+CollectionViewExtensions.swift in Sources */,
@@ -1022,7 +1038,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 22A6RK2943;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OrrRock/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -1056,7 +1072,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 22A6RK2943;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OrrRock/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";

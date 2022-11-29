@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import SnapKit
 
 final class RouteFindingPageView: UIView {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -17,3 +19,4 @@ final class RouteFindingPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

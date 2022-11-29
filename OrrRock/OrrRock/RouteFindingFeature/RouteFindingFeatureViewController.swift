@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class RouteFindingFeatureViewController: UIViewController {
+final class RouteFindingFeatureViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Variables
     
@@ -22,6 +22,12 @@ final class RouteFindingFeatureViewController: UIViewController {
     private var afterCell: RouteFindingThumbnailCollectionViewCell?
     
     let collectionViewCellSize: Int = 62
+    
+    
+    // MARK: ✏️
+    // MARK: RouteFindingPageView Components
+    var tapGesture: UITapGestureRecognizer
+    var isHandButton: Bool = true
     
     // MARK: View Components
     
@@ -40,6 +46,12 @@ final class RouteFindingFeatureViewController: UIViewController {
     // 루트파인딩 제스처와 인터렉션이 실제로 이뤄지는 뷰
     private var pageView: RouteFindingPageView = {
         let view = RouteFindingPageView()
+        
+        // MARK: ✏️
+//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(makeRoutePointButton(_:)))
+//        view.addGestureRecognizer(gestureRecognizer)
+        
+        
         return view
     }()
     
@@ -157,6 +169,8 @@ final class RouteFindingFeatureViewController: UIViewController {
     init(routeInfo: RouteInfo) {
         self.routeInfo = routeInfo
         self.pages = routeInfo.pages
+//        panGesture = UIPanGestureRecognizer()
+        tapGesture = UITapGestureRecognizer()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -180,6 +194,8 @@ final class RouteFindingFeatureViewController: UIViewController {
         view.backgroundColor = .black
         setUpLayout()
         setUpThumbnailCollectionDelegate()
+        // MARK: ✏️
+        setGesture()
     }
     
     // status bar 의 글자 색상을 흰 색으로 변경
@@ -215,6 +231,38 @@ final class RouteFindingFeatureViewController: UIViewController {
         // TODO: RouteFindingPageVIew UI 및 뷰 구현방법이 나오면 PageInfo에서 뷰 그리기 구현
         
         return view
+    }
+    
+    @objc
+    func makeRoutePoint(_ sender: UITapGestureRecognizer){
+        print("✅ tapped")
+        
+        if sender.state == .ended {
+            addRoutePointButton(to: sender.location(in: pageView))
+        }
+    }
+    
+    func addRoutePointButton(to location: CGPoint ) {
+        var button = UIButton()
+        button.setImage(UIImage(named: isHandButton ? "fail_icon" : "success_icon"), for: .normal)
+        self.view.addSubview(button)
+        var panGesture = UIPanGestureRecognizer(target: self, action: #selector(moveRoutePointButton(_:)))
+        panGesture.delegate = self
+        button.addGestureRecognizer(panGesture)
+        button.snp.makeConstraints{
+            $0.centerX.equalTo(location.x)
+            $0.centerY.equalTo(location.y)
+        }
+//        button.center = CGPoint(x: container.center.x, y: container.center.y)
+    }
+    
+    @objc
+    func moveRoutePointButton(_ sender: UIPanGestureRecognizer){
+        print("dragged")
+        guard sender.state == .began || sender.state == .changed, let box = sender.view else { return }
+        let translation = sender.translation(in: box.superview)
+        box.center = CGPoint(x: box.center.x + translation.x, y: box.center.y + translation.y)
+        sender.setTranslation(.zero, in: box.superview)
     }
     
     // 선택된 셀(화면 가운데 위치한 셀)에 대해 페이지를 보여줌
@@ -268,16 +316,20 @@ final class RouteFindingFeatureViewController: UIViewController {
     
     func tapHandButton() {
         
+        isHandButton = true
         // TODO: 손 버튼을 눌렀을 때 손 입력모드 or 최대 개수 초과 알림 띄우기
         
-        print("Hand Button Tapped")
+        print(isHandButton ? "Hand Button Tapped" : "Foot Button Tapped")
     }
     
     func tapFootButton() {
         
+        
+        isHandButton = false
+        
         // TODO: 발 버튼을 눌렀을 때 손 입력모드 or 최대 개수 초과 알림 띄우기
         
-        print("Foot Button Tapped")
+        print(isHandButton ? "Hand Button Tapped" : "Foot Button Tapped")
     }
     
     // MARK: @objc Functions
@@ -311,6 +363,16 @@ final class RouteFindingFeatureViewController: UIViewController {
         thumbnailCollectionView.scrollToItem(at: nextPath, at: .centeredHorizontally, animated: true)
         cancelDeleteMode()
     }
+    
+    // MARK: - Gesture
+    func setGesture(){
+        // 손, 발 루트포인트 버튼 추가 Gesture
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.makeRoutePoint(_:)))
+        tapGesture.delegate = self
+        
+        view.addGestureRecognizer(tapGesture)
+    }
+    
 }
 
 extension RouteFindingFeatureViewController {
@@ -379,6 +441,7 @@ extension RouteFindingFeatureViewController {
             $0.height.equalTo(110)
             $0.width.equalTo(40)
         }
+        
     }
     
     private func setUpThumbnailCollectionDelegate() {
