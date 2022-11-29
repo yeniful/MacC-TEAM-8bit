@@ -234,11 +234,12 @@ final class RouteFindingFeatureViewController: UIViewController, UIGestureRecogn
     
     @objc
     func makeRoutePoint(_ sender: UITapGestureRecognizer){
-        print("✅ tapped")
         
         if sender.state == .ended {
             if sender.location(in: pageView).y < pageView.frame.maxY {
                 addRoutePointButton(to: sender.location(in: pageView))
+                print("✅ tapped")
+
             }
         }
     }
