@@ -11,11 +11,11 @@ import SnapKit
 final class RouteFindingPageView: UIView {
     
     var pageInfo: PageInfo?
-    var points: [PointInfo]?
+    var points: [PointInfo] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        pageInfo = testData
+//        pageInfo = testData
 //        points = dummyData
         configureTestData()
         configureButtons()
@@ -40,7 +40,7 @@ final class RouteFindingPageView: UIView {
     }
     
     func configureButtons() {
-        guard let points = points else { return }
+//        guard let points = points else { return }
         for point in points {
             let button = point.footOrHand == .hand ? RouteFindingFeatureHandButton() : RouteFindingFeatureFootButton()
             self.addSubview(button)
@@ -51,20 +51,20 @@ final class RouteFindingPageView: UIView {
     }
 }
 
-var testData = PageInfo(rowOrder: 0,
-                        points: [PointInfo(footOrHand: .hand,
-                                          isForce: true,
-                                          position: CGPoint(x: 0, y: 0),
-                                          forceDirection: .pi0),
-                                 PointInfo(footOrHand: .foot,
-                                                   isForce: true,
-                                                   position: CGPoint(x: 0, y: 0),
-                                                   forceDirection: .pi0),
-                                 PointInfo(footOrHand: .hand,
-                                                   isForce: true,
-                                                   position: CGPoint(x: 0, y: 0),
-                                                   forceDirection: .pi0)])
-
-var dummyData = [PointInfo(footOrHand: .foot, isForce: true, position: CGPoint(x: 0, y: 0), forceDirection: .pi0),
-                 PointInfo(footOrHand: .hand, isForce: true, position: CGPoint(x: 50, y: 50), forceDirection: .pi0),
-                 PointInfo(footOrHand: .foot, isForce: true, position: CGPoint(x: 100, y: 100), forceDirection: .pi0)]
+//var testData = PageInfo(rowOrder: 0,
+//                        points: [PointInfo(footOrHand: .hand,
+//                                          isForce: true,
+//                                          position: CGPoint(x: 0, y: 0),
+//                                          forceDirection: .pi0),
+//                                 PointInfo(footOrHand: .foot,
+//                                                   isForce: true,
+//                                                   position: CGPoint(x: 0, y: 0),
+//                                                   forceDirection: .pi0),
+//                                 PointInfo(footOrHand: .hand,
+//                                                   isForce: true,
+//                                                   position: CGPoint(x: 0, y: 0),
+//                                                   forceDirection: .pi0)])
+//
+//var dummyData = [PointInfo(footOrHand: .foot, isForce: true, position: CGPoint(x: 0, y: 0), forceDirection: .pi0),
+//                 PointInfo(footOrHand: .hand, isForce: true, position: CGPoint(x: 50, y: 50), forceDirection: .pi0),
+//                 PointInfo(footOrHand: .foot, isForce: true, position: CGPoint(x: 100, y: 100), forceDirection: .pi0)]
