@@ -17,7 +17,7 @@ final class RouteFindingPageView: UIView {
         super.init(frame: frame)
 //        pageInfo = testData
 //        points = dummyData
-        configureTestData()
+//        configureTestData()
         configureButtons()
 
     }
@@ -26,18 +26,18 @@ final class RouteFindingPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureTestData(){
-        guard let points = pageInfo?.points, pageInfo?.rowOrder == 0 else {
-            return
-        }
-        for point in points {
-            let button = point.footOrHand == .hand ? RouteFindingFeatureHandButton() : RouteFindingFeatureFootButton()
-            self.addSubview(button)
-            button.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-        }
-    }
+//    func configureTestData(){
+//        guard let points = pageInfo?.points, pageInfo?.rowOrder == 0 else {
+//            return
+//        }
+//        for point in points {
+//            let button = point.footOrHand == .hand ? RouteFindingFeatureHandButton() : RouteFindingFeatureFootButton()
+//            self.addSubview(button)
+//            button.snp.makeConstraints {
+//                $0.edges.equalToSuperview()
+//            }
+//        }
+//    }
     
     func configureButtons() {
 //        guard let points = points else { return }
